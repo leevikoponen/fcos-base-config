@@ -1,0 +1,33 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Relativ-IT/Butane-Schemas/main/Butane-Schema.json
+---
+variant: fcos
+version: 1.5.0
+
+boot_device:
+  luks:
+    tang:
+      - url: http://home.hosts.leevikoponen.fi:1337
+        thumbprint: oDmbJxxYkMPr5B6ORKerb2443LsP2UloqfZKUx50otM
+
+storage:
+  disks:
+    - device: /dev/sda
+      wipe_table: false
+      partitions:
+        - label: root
+          number: 4
+          size_mib: 8192
+          resize: true
+
+        - label: data
+          size_mib: 0
+
+  luks:
+    - name: data-crypt
+      device: /dev/disk/by-partlabel/data
+
+  filesystems:
+    - device: /dev/mapper/data-crypt
+      path: /var
+      format: xfs
+      with_mount_unit: true

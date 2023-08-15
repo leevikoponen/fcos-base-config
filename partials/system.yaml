@@ -1,0 +1,28 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/Relativ-IT/Butane-Schemas/main/Butane-Schema.json
+---
+variant: fcos
+version: 1.5.0
+
+storage:
+  trees:
+    - path: /
+      local: files
+
+passwd:
+  users:
+    - name: web
+      system: true
+
+    - name: leevi
+      groups:
+        - sudo
+        - wheel
+      ssh_authorized_keys:
+        - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICn1Us79XUCcDP+iljrwQkuUua51xTzIXn8jFq9eCmzt leevi@rusina
+        - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDjXE74FJipbkpRI8c7oes1bFqvSgFVciFn3e0LS/+eN leevi@kabylake
+
+systemd:
+  units:
+    - name: rpm-ostree-countme.timer
+      enabled: false
+      mask: true
