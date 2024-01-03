@@ -7,7 +7,7 @@ boot_device:
   luks:
     tang:
       - url: http://home.hosts.leevikoponen.fi:1337
-        thumbprint: oDmbJxxYkMPr5B6ORKerb2443LsP2UloqfZKUx50otM
+        thumbprint: fB2BZGZYONLRce4IdC0k8PL60oME0EfRQXTqt8iSe7s
 
 storage:
   disks:
